@@ -39,7 +39,14 @@ sui1 <- sui %>%
                        "Ghana", "India", "Haiti", "Hungary", 
                        "Iceland", "Israel", "Portugal", "Italy")) %>%
   view()
-  
+
+sui2 <- sui1 %>%
+  group_by(Entity) %>%
+  summarise(media = mean(taxa_suicidio),
+            dp = sd(taxa_suicidio),
+            n = n(),
+            ep = dp/sqrt(n))
+view(sui2)
 
 
 
