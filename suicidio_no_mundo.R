@@ -25,5 +25,24 @@ library(tidyverse)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
+sui <- read.csv("suicide-death-rates.csv")
+view(sui)
+names(sui)
+
+# Manipular dados --------------------------------------------------------------------------------------------------------------------------
+
+sui1 <- sui %>%
+  select(-Code) %>%
+  rename(taxa_suicidio = Deaths...Self.harm...Sex..Both...Age..Age.standardized..Rate.) %>%
+  filter(Entity %in% c("Angola", "Brazil", "China", "Russsia",
+                       "United States", "France", "Germany",
+                       "Ghana", "India", "Haiti", "Hungary", 
+                       "Iceland", "Israel", "Portugal", "Italy")) %>%
+  view()
+  
+
+
+
+
 
 
