@@ -23,6 +23,7 @@
 
 library(tidyverse)
 library(pals)
+library(viridis)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -64,8 +65,8 @@ ggplot(sui2, aes(x = fct_reorder(Entity, media), y = media, fill = Entity)) +
   geom_errorbar(aes(x = Entity, y = media,
                     ymin = media - ep, ymax = media + ep),
                     size = 0.8, width = 0.3) +
-  scale_fill_manual(values = as.vector(alphabet(n = 14))) +
-    scale_y_continuous(expand = expansion(mult = c(0, 0))) +
+  scale_fill_viridis(discrete = T, option = "E") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0))) +
   coord_flip() +
   labs(x = "Países", y = "Taxa de suicídio (%)") +
   theme_classic(base_size = 14) +
