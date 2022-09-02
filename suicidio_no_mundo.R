@@ -22,6 +22,7 @@
 # Carregar pacotes -------------------------------------------------------------------------------------------------------------------------
 
 library(tidyverse)
+library(pals)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -48,6 +49,14 @@ sui2 <- sui1 %>%
             ep = dp/sqrt(n))
 view(sui2)
 
+# Gráficos ---------------------------------------------------------------------------------------------------------------------------------
+
+ggplot(sui1, aes(x = Year, y = taxa_suicidio, group = Entity, color = Entity)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = as.vector(alphabet(n = 14))) +
+  labs(x = "Tempo (anos", y = "Taxa de suicídio (%)",
+       color = "Países") +
+  theme_classic(base_size = 14)
 
 
 
