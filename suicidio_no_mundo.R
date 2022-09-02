@@ -58,10 +58,13 @@ ggplot(sui1, aes(x = Year, y = taxa_suicidio, group = Entity, color = Entity)) +
        color = "Países") +
   theme_classic(base_size = 14)
 
-ggplot(sui2, aes(x = Entity, y = media, fill = Entity)) +
+ggplot(sui2, aes(x = fct_reorder(Entity, media), y = media, fill = Entity)) +
   geom_col(show.legend = F) +
   geom_errorbar(aes(x = Entity, y = media,
-                    ymin = media - ep, ymax = media + ep)) +
+                    ymin = media - ep, ymax = media + ep),
+                size = 0.8, width = 0.3) +
+  scale_fill_manual(values = as.vector(alphabet(n = 14))) +
+  coord_flip() +
   labs(x = "Países", y = "Taxa de suicídio (%)") +
   theme_classic(base_size = 14) 
 
